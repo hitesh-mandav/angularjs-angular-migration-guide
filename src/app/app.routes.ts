@@ -1,6 +1,6 @@
 angular
   .module("codecraft")
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(function($stateProvider: any, $urlRouterProvider: any) {
     $stateProvider
       .state("list", {
         url: "/",

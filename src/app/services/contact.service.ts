@@ -1,11 +1,11 @@
 angular
   .module("codecraft")
-  .factory("ContactService", function(Contact, $rootScope, $q, toaster) {
+  .factory("ContactService", function(Contact: any, $rootScope: any, $q: any, toaster: any) {
     var self = {
-      getPerson: function(email) {
+      getPerson: function(email: any) {
         console.log(email);
         for (var i = 0; i < self.persons.length; i++) {
-          var obj = self.persons[i];
+          var obj: any = self.persons[i];
           if (obj.email == email) {
             return obj;
           }
@@ -15,10 +15,11 @@ angular
       hasMore: true,
       isLoading: false,
       isSaving: false,
-      persons: [],
+      persons: [] as any[],
       search: null,
       sorting: "name",
       ordering: "ASC",
+      isDeleting: false,
       doSearch: function() {
         self.hasMore = true;
         self.page = 1;
@@ -42,7 +43,7 @@ angular
             q: self.search
           };
 
-          Contact.query(params, function(data) {
+          Contact.query(params, function(data: any) {
             console.debug(data);
             angular.forEach(data, function(person) {
               self.persons.push(new Contact(person));
@@ -61,7 +62,7 @@ angular
           self.loadContacts();
         }
       },
-      updateContact: function(person) {
+      updateContact: function(person: any) {
         var d = $q.defer();
         self.isSaving = true;
         person.$update().then(function() {
@@ -71,10 +72,10 @@ angular
         });
         return d.promise;
       },
-      removeContact: function(person) {
+      removeContact: function(person: any) {
         var d = $q.defer();
         self.isDeleting = true;
-        name = person.name;
+        var name = person.name;
         person.$remove().then(function() {
           self.isDeleting = false;
           var index = self.persons.indexOf(person);
@@ -84,7 +85,7 @@ angular
         });
         return d.promise;
       },
-      createContact: function(person) {
+      createContact: function(person: any) {
         var d = $q.defer();
         self.isSaving = true;
         Contact.save(person).$promise.then(function() {

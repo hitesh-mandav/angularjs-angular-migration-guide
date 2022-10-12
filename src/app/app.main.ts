@@ -11,10 +11,10 @@ angular
     "ui.router"
   ])
   .config(function(
-    $httpProvider,
-    $resourceProvider,
-    laddaProvider,
-    $datepickerProvider
+    $httpProvider: any,
+    $resourceProvider: any,
+    laddaProvider: any,
+    $datepickerProvider: any
   ) {
     laddaProvider.setOption({
       style: "expand-right"
