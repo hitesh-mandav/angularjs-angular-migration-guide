@@ -53,3 +53,8 @@ add build script in package.json rimraf src/dist && webpack --bail --progress --
 run build scipt start the app and verify if everything works file.
 
 optionally can add dist folders to .gitignore file.
+
+STEP 3:
+
+upgrade angularjs version to lates version by updating the version number in package.json file. Run npm i then npm run build and start the app to verify if everything is working if there are any errors refer to angularjs change log to look for breaking anges and fix those.
+
