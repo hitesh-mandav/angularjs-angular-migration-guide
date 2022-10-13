@@ -65,3 +65,8 @@ Componentify the angularjs version.
 i.e : convert the controllers and directives i.e anything with a view to angularjs components.
 remove the imports of controllers and directives from main.ts and add components import.
 change the app.routes to refer to the new components.
+
+STEP 5:
+
+Mordernizing the angularjs app.
+use arrow function, for of loops etc where ever possible. also replace dependencies of angularjs specific entities which are not supported by angular like $q, $resources with mordern promise and $http etc which will make the migration to angular easier
