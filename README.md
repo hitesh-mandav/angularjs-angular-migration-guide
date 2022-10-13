@@ -70,3 +70,15 @@ STEP 5:
 
 Mordernizing the angularjs app.
 use arrow function, for of loops etc where ever possible. also replace dependencies of angularjs specific entities which are not supported by angular like $q, $resources with mordern promise and $http etc which will make the migration to angular easier
+
+ST$EP 6:
+
+Add target angular version dependencies and dev-dependecies to package.json. this can be obtained from a new angular project.
+
+if there is error while npm i due to dependency mismatch then npm i --legacy-peer-deps can be tried or try to get compatible dependencies.
+
+also add approprate @angular/upgrade dependency to package.json.
+
+now it is important to remove ng-app from index.html as the app will be bootstraped via angular from main.ts
+
+in main.ts declate the appmodule and the bootstrap the application via upgrade module manually.
