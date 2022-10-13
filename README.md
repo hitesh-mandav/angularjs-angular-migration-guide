@@ -58,3 +58,10 @@ STEP 3:
 
 upgrade angularjs version to lates version by updating the version number in package.json file. Run npm i then npm run build and start the app to verify if everything is working if there are any errors refer to angularjs change log to look for breaking anges and fix those.
 
+STEP 4:
+
+Componentify the angularjs version.
+
+i.e : convert the controllers and directives i.e anything with a view to angularjs components.
+remove the imports of controllers and directives from main.ts and add components import.
+change the app.routes to refer to the new components.
