@@ -9,7 +9,7 @@ export class ContactService {
   private isLoading:boolean = false;
   public isSaving: boolean = false;
   private persons: any[] = [];
-  private search: any = null;
+  private search: string = "";
   private sorting: string = "name";
   private ordering: string = "ASC";
   public isDeleting: boolean = false;
@@ -57,11 +57,11 @@ export class ContactService {
       this.Contact.query(params).then((res: any)=> {
 
         console.debug(res);
-        for (let person of res.data) {
+        for (let person of res) {
           this.persons.push(person);
         }
 
-        if (res.data.length === 0) {
+        if (res.length === 0) {
           this.hasMore = false;
         }
         this.isLoading = false;
