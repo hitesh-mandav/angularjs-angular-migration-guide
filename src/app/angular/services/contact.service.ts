@@ -4,6 +4,7 @@ import { Inject } from '@angular/core';
 import { downgradeInjectable } from '@angular/upgrade/static';
 
 import { Contact } from './contact.resource';
+import { Toaster } from '../../ajs-upgraded-providers';
 
 export class ContactService {
   private page: number = 1;
@@ -19,6 +20,8 @@ export class ContactService {
   constructor(
       @Inject(Contact)
       private contact: Contact,
+      @Inject(Toaster)
+      private toaster: any,
     ) {
     this.loadContacts();
   }
@@ -106,7 +109,7 @@ export class ContactService {
                 this.isDeleting = false;
                 var index = this.persons.indexOf(person);
                 this.persons.splice(index, 1);
-                // this.toaster.pop("success", "Deleted " + name);
+                this.toaster.pop("success", "Deleted " + name);
                 resolve();
             },
             err => reject()
@@ -125,7 +128,7 @@ export class ContactService {
                 this.page = 1;
                 this.persons = [];
                 this.loadContacts();
-                // this.toaster.pop("success", "Created " + person.name);
+                this.toaster.pop("success", "Created " + person.name);
                 resolve();
             },
             err => reject()
