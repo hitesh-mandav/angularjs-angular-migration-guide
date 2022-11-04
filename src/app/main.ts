@@ -12,7 +12,6 @@ import 'angular-ui-router';
 
 
 import './app.main';
-import './services';
 import './filters';
 import './components';
 import './app.routes';
@@ -26,6 +25,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClientModule } from '@angular/common/http';
 
 import { Contact } from './angular/services/contact.resource';
+import { ContactService } from './angular/services/contact.service';
 
 @NgModule({
   imports: [
@@ -35,6 +35,7 @@ import { Contact } from './angular/services/contact.resource';
   ],
   providers: [
     Contact,
+    ContactService,
   ]
 })
 export class AppModule {
