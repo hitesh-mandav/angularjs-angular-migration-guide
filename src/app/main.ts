@@ -23,9 +23,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { UpgradeModule } from '@angular/upgrade/static';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { HttpClientModule } from '@angular/common/http';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
 import { Contact } from './angular/services/contact.resource';
 import { ContactService } from './angular/services/contact.service';
+import { SearchComponent } from './angular/components/search/search.component';
 import { toasterServiceProvider } from './ajs-upgraded-providers';
 
 @NgModule({
@@ -33,11 +38,19 @@ import { toasterServiceProvider } from './ajs-upgraded-providers';
     BrowserModule,
     UpgradeModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     Contact,
     ContactService,
     toasterServiceProvider,
+  ],
+  declarations: [
+    SearchComponent,
+  ],
+  entryComponents: [
+    SearchComponent,
   ]
 })
 export class AppModule {

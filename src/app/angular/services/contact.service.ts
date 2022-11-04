@@ -12,9 +12,9 @@ export class ContactService {
   private isLoading:boolean = false;
   public isSaving: boolean = false;
   private persons: any[] = [];
-  private search: string = "";
-  private sorting: string = "name";
-  private ordering: string = "ASC";
+  public search: string = "";
+  public sorting: string = "name";
+  public ordering: string = "ASC";
   public isDeleting: boolean = false;
 
   constructor(
