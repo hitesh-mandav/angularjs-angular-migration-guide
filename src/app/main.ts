@@ -12,7 +12,6 @@ import 'angular-ui-router';
 
 
 import './app.main';
-import './filters';
 import './components';
 import './app.routes';
 
@@ -28,10 +27,16 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 
+import {
+  toasterServiceProvider,
+  uiRouterStateServiceProvider,
+} from './ajs-upgraded-providers';
+
 import { Contact } from './angular/services/contact.resource';
 import { ContactService } from './angular/services/contact.service';
 import { SearchComponent } from './angular/components/search/search.component';
-import { toasterServiceProvider } from './ajs-upgraded-providers';
+import { CardComponent } from './angular/components/card/card.component';
+import { DefaultImagePipe } from './angular/pipes/default-image.pipe';
 
 @NgModule({
   imports: [
@@ -45,12 +50,16 @@ import { toasterServiceProvider } from './ajs-upgraded-providers';
     Contact,
     ContactService,
     toasterServiceProvider,
+    uiRouterStateServiceProvider,
   ],
   declarations: [
+    DefaultImagePipe,
     SearchComponent,
+    CardComponent,
   ],
   entryComponents: [
     SearchComponent,
+    CardComponent,
   ]
 })
 export class AppModule {

@@ -11,3 +11,15 @@ export const toasterServiceProvider = {
     useFactory: toasterServiceFactory,
     deps: ['$injector'],
 }
+
+export const UIRouterState = new InjectionToken("UIRouterState");
+
+export function uiRouterStateServiceFactory(i: any) {
+    return i.get('$state');
+}
+
+export const uiRouterStateServiceProvider = {
+    provide: UIRouterState,
+    useFactory: uiRouterStateServiceFactory,
+    deps: ['$injector'],
+}
