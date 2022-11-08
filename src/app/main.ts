@@ -27,6 +27,7 @@ import {
 } from '@angular/forms';
 
 import { LaddaModule } from 'angular2-ladda';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import {
   toasterServiceProvider,
@@ -39,6 +40,7 @@ import { SearchComponent } from './angular/components/search/search.component';
 import { CardComponent } from './angular/components/card/card.component';
 import { DefaultImagePipe } from './angular/pipes/default-image.pipe';
 import { SpinnerComponent } from './angular/components/spinner/spinner.component';
+import { PersonListComponent } from './angular/components/person/person-list/person-list.component';
 
 @NgModule({
   imports: [
@@ -48,6 +50,7 @@ import { SpinnerComponent } from './angular/components/spinner/spinner.component
     FormsModule,
     ReactiveFormsModule,
     LaddaModule,
+    InfiniteScrollModule,
   ],
   providers: [
     Contact,
@@ -60,11 +63,13 @@ import { SpinnerComponent } from './angular/components/spinner/spinner.component
     SearchComponent,
     CardComponent,
     SpinnerComponent,
+    PersonListComponent,
   ],
   entryComponents: [
     SearchComponent,
     CardComponent,
     SpinnerComponent,
+    PersonListComponent,
   ]
 })
 export class AppModule {
