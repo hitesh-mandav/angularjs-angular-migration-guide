@@ -27,6 +27,8 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 
+import { LaddaModule } from 'angular2-ladda';
+
 import {
   toasterServiceProvider,
   uiRouterStateServiceProvider,
@@ -45,6 +47,7 @@ import { DefaultImagePipe } from './angular/pipes/default-image.pipe';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    LaddaModule,
   ],
   providers: [
     Contact,
