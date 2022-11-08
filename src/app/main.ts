@@ -3,7 +3,6 @@ import 'angular-resource';
 import 'angular-animate'
 
 import 'ng-infinite-scroll';
-import 'angular-spinner';
 import 'angular-auto-validate/dist/jcs-auto-validate';
 import 'angular-ladda';
 import 'angular-strap';
@@ -39,6 +38,7 @@ import { ContactService } from './angular/services/contact.service';
 import { SearchComponent } from './angular/components/search/search.component';
 import { CardComponent } from './angular/components/card/card.component';
 import { DefaultImagePipe } from './angular/pipes/default-image.pipe';
+import { SpinnerComponent } from './angular/components/spinner/spinner.component';
 
 @NgModule({
   imports: [
@@ -59,10 +59,12 @@ import { DefaultImagePipe } from './angular/pipes/default-image.pipe';
     DefaultImagePipe,
     SearchComponent,
     CardComponent,
+    SpinnerComponent,
   ],
   entryComponents: [
     SearchComponent,
     CardComponent,
+    SpinnerComponent,
   ]
 })
 export class AppModule {
