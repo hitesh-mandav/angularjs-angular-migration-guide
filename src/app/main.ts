@@ -11,7 +11,6 @@ import 'angular-ui-router';
 
 
 import './app.main';
-import './components';
 import './app.routes';
 
 import './polyfills';
@@ -31,6 +30,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import {
   toasterServiceProvider,
+  uiRouterStateParamsServiceProvider,
   uiRouterStateServiceProvider,
 } from './ajs-upgraded-providers';
 
@@ -41,6 +41,9 @@ import { CardComponent } from './angular/components/card/card.component';
 import { DefaultImagePipe } from './angular/pipes/default-image.pipe';
 import { SpinnerComponent } from './angular/components/spinner/spinner.component';
 import { PersonListComponent } from './angular/components/person/person-list/person-list.component';
+import { PersonFormComponent } from './angular/components/person/person-form/person-form.component';
+import { PersonCreateComponent } from './angular/components/person/person-create/person-create.component';
+import { PersonEditComponent } from './angular/components/person/person-edit/person-edit.component';
 
 @NgModule({
   imports: [
@@ -57,6 +60,7 @@ import { PersonListComponent } from './angular/components/person/person-list/per
     ContactService,
     toasterServiceProvider,
     uiRouterStateServiceProvider,
+    uiRouterStateParamsServiceProvider,
   ],
   declarations: [
     DefaultImagePipe,
@@ -64,12 +68,17 @@ import { PersonListComponent } from './angular/components/person/person-list/per
     CardComponent,
     SpinnerComponent,
     PersonListComponent,
+    PersonFormComponent,
+    PersonCreateComponent,
+    PersonEditComponent,
   ],
   entryComponents: [
     SearchComponent,
     CardComponent,
     SpinnerComponent,
     PersonListComponent,
+    PersonCreateComponent,
+    PersonEditComponent,
   ]
 })
 export class AppModule {
