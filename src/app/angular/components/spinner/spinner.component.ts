@@ -1,5 +1,3 @@
-import * as angular from "angular";
-
 import {
     AfterViewInit,
     Component,
@@ -9,7 +7,6 @@ import {
 } from "@angular/core";
 
 import { Spinner } from 'spin.js';
-import { downgradeComponent } from "@angular/upgrade/static";
 
 @Component({
     selector: 'cc-spinner',
@@ -30,10 +27,3 @@ export class SpinnerComponent implements AfterViewInit {
             .spin(this.spinnerEl.nativeElement);
     }
 }
-
-angular
-  .module("codecraft")
-  .directive('ccSpinner', downgradeComponent({
-      component: SpinnerComponent,
-      inputs: ['isLoading', 'message'],
-  }));

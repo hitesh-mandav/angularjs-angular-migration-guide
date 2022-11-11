@@ -24,7 +24,7 @@
 
 
         <a class="btn btn-default btn-sm"
-           (click)="editUser()"
+        [routerLink]="['/edit', user.email]"
         >
           <i class="fa fa-pencil"></i>
           &nbsp;Edit

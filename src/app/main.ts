@@ -1,18 +1,3 @@
-import 'angular';
-import 'angular-resource';
-import 'angular-animate'
-
-import 'ng-infinite-scroll';
-import 'angular-auto-validate/dist/jcs-auto-validate';
-import 'angular-ladda';
-import 'angular-strap';
-import 'angularjs-toaster';
-import 'angular-ui-router';
-
-
-import './app.main';
-import './app.routes';
-
 import './polyfills';
 
 import { NgModule } from '@angular/core';
@@ -28,11 +13,7 @@ import {
 import { LaddaModule } from 'angular2-ladda';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import {
-  toasterServiceProvider,
-  uiRouterStateParamsServiceProvider,
-  uiRouterStateServiceProvider,
-} from './ajs-upgraded-providers';
+import { ToasterModule, ToasterService } from 'angular2-toaster';
 
 import { Contact } from './angular/services/contact.resource';
 import { ContactService } from './angular/services/contact.service';
@@ -44,6 +25,9 @@ import { PersonListComponent } from './angular/components/person/person-list/per
 import { PersonFormComponent } from './angular/components/person/person-form/person-form.component';
 import { PersonCreateComponent } from './angular/components/person/person-create/person-create.component';
 import { PersonEditComponent } from './angular/components/person/person-edit/person-edit.component';
+import { RouterModule } from '@angular/router';
+import { routes } from './app.routes';
+import { AppRootComponent } from './angular/app.component';
 
 @NgModule({
   imports: [
@@ -54,13 +38,16 @@ import { PersonEditComponent } from './angular/components/person/person-edit/per
     ReactiveFormsModule,
     LaddaModule,
     InfiniteScrollModule,
+    ToasterModule,
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   providers: [
     Contact,
     ContactService,
-    toasterServiceProvider,
-    uiRouterStateServiceProvider,
-    uiRouterStateParamsServiceProvider,
+    ToasterService
+    // toasterServiceProvider,
+    // uiRouterStateServiceProvider,
+    // uiRouterStateParamsServiceProvider,
   ],
   declarations: [
     DefaultImagePipe,
@@ -71,25 +58,14 @@ import { PersonEditComponent } from './angular/components/person/person-edit/per
     PersonFormComponent,
     PersonCreateComponent,
     PersonEditComponent,
+    AppRootComponent
   ],
-  entryComponents: [
-    SearchComponent,
-    CardComponent,
-    SpinnerComponent,
-    PersonListComponent,
-    PersonCreateComponent,
-    PersonEditComponent,
+  bootstrap: [
+    AppRootComponent
   ]
 })
 export class AppModule {
-  // Override Angular bootstrap so it doesn't do anything
-  ngDoBootstrap() {
-  }
 }
 
 // Bootstrap using the UpgradeModule
-platformBrowserDynamic().bootstrapModule(AppModule).then(platformRef => {
-  console.log("Bootstrapping in Hybrid mode with Angular & AngularJS");
-  const upgrade = platformRef.injector.get(UpgradeModule) as UpgradeModule;
-  upgrade.bootstrap(document.body, ['codecraft']);
-});
+platformBrowserDynamic().bootstrapModule(AppModule)

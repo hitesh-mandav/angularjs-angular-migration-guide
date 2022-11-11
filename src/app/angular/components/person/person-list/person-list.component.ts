@@ -1,6 +1,3 @@
-
-import * as angular from "angular";
-
 import {
     Component,
     Inject
@@ -19,10 +16,3 @@ export class PersonListComponent {
         public readonly contacts: ContactService
     ){}
 }
-
-
-angular
-  .module("codecraft")
-  .directive('personList', downgradeComponent({
-      component: PersonListComponent,
-  }));

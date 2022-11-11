@@ -1,17 +1,12 @@
 import {
     Component,
-    EventEmitter,
     Inject,
     Input,
     OnInit,
-    Output,
 } from "@angular/core";
 
 import { ContactService } from "./../../../services/contact.service";
-import {
-    UIRouterState,
-    UIRouterStateParams,
-} from "./../../../../ajs-upgraded-providers";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
     selector: 'person-form',
@@ -26,32 +21,37 @@ export class PersonFormComponent implements OnInit {
     constructor(
         @Inject(ContactService)
         public contacts: ContactService,
-        @Inject(UIRouterState)
-        private $state: any,
-        @Inject(UIRouterStateParams)
-        private $stateParams: any,
+        @Inject(ActivatedRoute)
+        private route: ActivatedRoute,
+        @Inject(Router)
+        private router: Router,
     ) {}
 
     public ngOnInit(): void {
         if (this.editing) {
-            this.person = this.contacts.getPerson(this.$stateParams.email);
+            this.route.params.subscribe(params => {
+                console.log(params);
+                if (params['email']) {
+                  this.person = this.contacts.getPerson(params['email']);
+                }
+              }); 
         }
     }
 
     public save(): void {
         if(this.editing){
             this.contacts.updateContact(this.person).then(() => {
-                this.$state.go("list");
+                this.router.navigate(['']);
               });
         } else {
             this.contacts.createContact(this.person)
-                .then(() =>  {this.$state.go("list");})
+                .then(() =>  {this.router.navigate(['']);})
         }
     }
 
     public remove(): void {
         this.contacts.removeContact(this.person).then(() => {
-          this.$state.go("list");
+            this.router.navigate(['']);
         });
     }
 }

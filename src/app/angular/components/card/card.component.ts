@@ -1,10 +1,7 @@
-import * as angular from 'angular';
-
 import { Component, Inject, Input } from '@angular/core';
-import { downgradeComponent } from '@angular/upgrade/static';
+import { Router } from '@angular/router';
 
 import { ContactService } from '../../services/contact.service';
-import { UIRouterState } from '../../../ajs-upgraded-providers';
 
 @Component({
     selector: 'cc-card',
@@ -17,8 +14,6 @@ export class CardComponent {
     constructor(
         @Inject(ContactService)
         private contactService: ContactService,
-        @Inject(UIRouterState)
-        private $state: any,
     ) {
         this.isDeleting = false;
     };
@@ -28,15 +23,4 @@ export class CardComponent {
         this.contactService.removeContact(this.user)
             .then(() => {this.isDeleting = false;});
     };
-
-    public editUser(): void {
-        this.$state.go('edit' ,{email: this.user.email} );
-    };
 }
-
-angular
-  .module("codecraft")
-  .directive('ccCard', downgradeComponent({
-      component: CardComponent,
-      inputs: ['user'],
-  }));

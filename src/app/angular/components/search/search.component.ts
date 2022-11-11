@@ -1,5 +1,3 @@
-import * as angular from 'angular';
-
 import {
     Component,
     Inject,
@@ -16,9 +14,7 @@ import {
     distinctUntilChanged,
 } from 'rxjs/operators';
 
-import { downgradeComponent } from '@angular/upgrade/static';
 import { ContactService } from '../../services/contact.service';
-
 
 @Component({
     selector: 'search',
@@ -60,9 +56,3 @@ export class SearchComponent implements OnInit {
         )  
     }
 }
-
-angular
-  .module("codecraft")
-  .directive('search', downgradeComponent({
-      component: SearchComponent
-  }));
